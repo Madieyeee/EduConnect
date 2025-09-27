@@ -326,7 +326,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## 📞 Support
 
 Pour toute question ou problème :
-- Email : support@educonnect.fr
+- Email :madieyepro@gmail.com
 - Documentation : [Wiki du projet]
 - Issues : [GitHub Issues]
 
