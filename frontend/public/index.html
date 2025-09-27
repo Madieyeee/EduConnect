@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="description" content="EduConnect - Plateforme de connexion entre étudiants et établissements d'enseignement supérieur" />
+    <meta name="keywords" content="éducation, université, école, candidature, étudiant, enseignement supérieur" />
+    <meta name="author" content="EduConnect" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://educonnect.fr/" />
+    <meta property="og:title" content="EduConnect - Votre passerelle vers l'enseignement supérieur" />
+    <meta property="og:description" content="Découvrez et postulez aux meilleures écoles et universités. Simplifiez vos candidatures avec EduConnect." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://educonnect.fr/" />
+    <meta property="twitter:title" content="EduConnect - Votre passerelle vers l'enseignement supérieur" />
+    <meta property="twitter:description" content="Découvrez et postulez aux meilleures écoles et universités. Simplifiez vos candidatures avec EduConnect." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon variations -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+    
+    <title>EduConnect - Votre passerelle vers l'enseignement supérieur</title>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EduConnect",
+      "description": "Plateforme de connexion entre étudiants et établissements d'enseignement supérieur",
+      "url": "https://educonnect.fr",
+      "logo": "https://educonnect.fr/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33-1-23-45-67-89",
+        "contactType": "Customer Service",
+        "availableLanguage": "French"
+      },
+      "sameAs": [
+        "https://www.facebook.com/educonnect",
+        "https://www.linkedin.com/company/educonnect",
+        "https://twitter.com/educonnect"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>JavaScript requis</h1>
+        <p>Vous devez activer JavaScript pour utiliser EduConnect.</p>
+        <p>Veuillez activer JavaScript dans votre navigateur et recharger la page.</p>
+      </div>
+    </noscript>
+    
+    <!-- Loading screen -->
+    <div id="loading-screen" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease-out;
+    ">
+      <div style="text-align: center; color: white;">
+        <div style="
+          width: 50px;
+          height: 50px;
+          border: 3px solid rgba(255,255,255,0.3);
+          border-radius: 50%;
+          border-top-color: white;
+          animation: spin 1s ease-in-out infinite;
+          margin: 0 auto 20px;
+        "></div>
+        <h2 style="margin: 0; font-size: 24px; font-weight: 600;">EduConnect</h2>
+        <p style="margin: 10px 0 0; opacity: 0.8;">Chargement en cours...</p>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    
+    <script>
+      // Hide loading screen when page is loaded
+      window.addEventListener('load', function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 300);
+        }
+      });
+    </script>
+    
+    <!-- Main app container -->
+    <div id="root"></div>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
