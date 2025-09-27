@@ -328,7 +328,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 Pour toute question ou problème :
 - Email :madieyepro@gmail.com
 - Documentation : [Wiki du projet]
-- Issues : [GitHub Issues]
+- Issues : [GitHub Issues](https://github.com/Madieyeee/EduConnect/issues)
 
 ## 🎉 Remerciements
 
