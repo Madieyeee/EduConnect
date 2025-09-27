@@ -1,4 +1,90 @@
-# EduConnect - Plateforme éducative
+# EduConnect Sénégal - Plateforme Éducative
+
+**EduConnect Sénégal** est une plateforme web centralisée conçue pour le référencement d'établissements d'enseignement supérieur au Sénégal et la gestion simplifiée des candidatures étudiantes. Ce projet a été spécialement adapté pour un hackathon, avec un focus sur le contexte sénégalais.
+
+## ✨ Contexte du Hackathon
+
+Cette version d'EduConnect a été entièrement "sénégalisée" :
+- **Monnaie** : Toutes les transactions et tous les frais sont en **Francs CFA (CFA)**.
+- **Données** : Les écoles, étudiants et adresses sont basés au Sénégal.
+- **Contenu** : Les emails, numéros de téléphone et autres informations sont adaptés au contexte local.
+- **Écoles Vedettes** : Met en avant des institutions sénégalaises renommées comme l'Institut Supérieur d'Informatique (ISI).
+
+## 🚀 Fonctionnalités
+
+### Pour les Étudiants
+- **Inscription et Connexion** : Créez un compte étudiant sécurisé.
+- **Recherche d'Écoles** : Filtrez les écoles par ville, domaine d'études, accréditations, frais de scolarité et diplômes.
+- **Profils d'Écoles Détaillés** : Consultez toutes les informations pertinentes sur un établissement.
+- **Candidature en Ligne** : Soumettez vos candidatures directement depuis la plateforme.
+- **Suivi des Candidatures** : Suivez en temps réel le statut de vos dossiers (Soumise, En cours, Acceptée, Rejetée).
+
+### Pour l'Admin (EduConnect)
+- **Tableau de Bord Complet** : Visualisez des statistiques clés (nombre d'écoles, d'étudiants, de candidatures, commissions totales).
+- **Gestion des Écoles (CRUD)** : Ajoutez, modifiez et supprimez des écoles.
+- **Gestion des Candidatures** : Acceptez, rejetez ou marquez les candidatures comme "en cours de traitement".
+- **Export PDF** : Générez des rapports PDF pour la liste complète des écoles ou des étudiants inscrits.
+
+## 🛠️ Stack Technique
+- **Backend** : Laravel (PHP)
+- **Frontend** : Blade, Tailwind CSS, JavaScript
+- **Base de données** : MySQL
+- **PDF** : `barryvdh/laravel-dompdf`
+
+## ⚙️ Installation et Lancement
+
+1.  **Cloner le dépôt**
+    ```bash
+    git clone https://github.com/Madieyeee/EduConnect.git
+    cd EduConnect
+    ```
+
+2.  **Installer les dépendances**
+    ```bash
+    composer install
+    ```
+
+3.  **Configurer l'environnement**
+    - Copiez le fichier `.env.example` en `.env`.
+    - Configurez vos identifiants de base de données (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
+    - Générez la clé d'application :
+    ```bash
+    php artisan key:generate
+    ```
+
+4.  **Lancer les migrations et le seeding**
+    Cette commande créera les tables et les remplira avec des données de test 100% sénégalaises.
+    ```bash
+    php artisan migrate --seed
+    ```
+
+5.  **Démarrer le serveur**
+    ```bash
+    php artisan serve
+    ```
+    La plateforme sera accessible à `http://127.0.0.1:8000`.
+
+## 👤 Utilisateurs par Défaut
+
+Après avoir lancé le seeder, vous pouvez utiliser les comptes suivants pour tester :
+
+- **Compte Administrateur**
+  - **Email** : `admin@educonnect.sn`
+  - **Mot de passe** : `password`
+
+- **Comptes Étudiants**
+  - **Email** : `aminata.diallo@example.com`
+  - **Mot de passe** : `password`
+  
+  - **Email** : `moussa.ndiaye@example.com`
+  - **Mot de passe** : `password`
+
+## 🧑‍💻 Développeurs
+
+Ce projet a été développé par :
+- **Madieyeee** - [GitHub](https://github.com/Madieyeee)
+- **Dionecena** - [GitHub](https://github.com/Dionecena)
+
 
 EduConnect est une plateforme centralisée qui référence les écoles, permet aux étudiants de postuler, et permet à EduConnect de suivre les candidatures et gérer la commission.
 
