@@ -192,13 +192,13 @@ L'application sera accessible à l'adresse : `http://localhost:8000`
 Après avoir exécuté les seeders, vous pouvez utiliser ces comptes :
 
 ### Administrateur
-- **Email** : admin@educonnect.fr
+- **Email** : admin@educonnect.sn
 - **Mot de passe** : password
 
 ### Étudiants
-- **Email** : marie.dupont@email.com | **Mot de passe** : password
-- **Email** : pierre.martin@email.com | **Mot de passe** : password
-- **Email** : sophie.bernard@email.com | **Mot de passe** : password
+- **Email** : aminata.diallo@gmail.com | **Mot de passe** : password
+- **Email** : moussa.ndiaye@gmail.com | **Mot de passe** : password
+- **Email** : fatou.sall@gmail.com | **Mot de passe** : password
 
 ## 📊 Structure de la base de données
 
