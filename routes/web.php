@@ -54,4 +54,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/applications', [AdminController::class, 'applications'])->name('applications.index');
     Route::get('/applications/{application}', [AdminController::class, 'showApplication'])->name('applications.show');
     Route::put('/applications/{application}/status', [AdminController::class, 'updateApplicationStatus'])->name('applications.update-status');
+    
+    // PDF Exports
+    Route::get('/export/schools-pdf', [AdminController::class, 'exportSchoolsPdf'])->name('export.schools-pdf');
+    Route::get('/export/students-pdf', [AdminController::class, 'exportStudentsPdf'])->name('export.students-pdf');
 });

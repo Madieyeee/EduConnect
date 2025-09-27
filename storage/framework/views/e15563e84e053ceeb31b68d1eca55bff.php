@@ -170,14 +170,31 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact</h3>
                     <ul class="space-y-2 text-gray-300">
-                        <li><i class="fas fa-envelope mr-2"></i> contact@educonnect.fr</li>
-                        <li><i class="fas fa-phone mr-2"></i> +33 1 23 45 67 89</li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@educonnect.sn</li>
+                        <li><i class="fas fa-phone mr-2"></i> +221 77 955 37 58</li>
+                        <li><i class="fas fa-phone mr-2"></i> +221 76 330 94 09</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Développeurs</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <a href="https://github.com/Madieyeee" target="_blank" class="text-gray-300 hover:text-white flex items-center">
+                                <i class="fab fa-github mr-2"></i> Madieyeee
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Dionecena" target="_blank" class="text-gray-300 hover:text-white flex items-center">
+                                <i class="fab fa-github mr-2"></i> Dionecena
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; <?php echo e(date('Y')); ?> EduConnect. Tous droits réservés.</p>
+                <p>&copy; <?php echo e(date('Y')); ?> EduConnect Sénégal. Tous droits réservés.</p>
             </div>
         </div>
     </footer>

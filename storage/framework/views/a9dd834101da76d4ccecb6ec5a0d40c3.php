@@ -11,6 +11,16 @@
                     <p class="text-gray-600">Gestion de la plateforme EduConnect</p>
                 </div>
                 <div class="flex space-x-3">
+                    <div class="flex space-x-2">
+                        <a href="<?php echo e(route('admin.export.schools-pdf')); ?>" class="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 transition duration-300 text-sm">
+                            <i class="fas fa-file-pdf mr-1"></i>
+                            Export Écoles
+                        </a>
+                        <a href="<?php echo e(route('admin.export.students-pdf')); ?>" class="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition duration-300 text-sm">
+                            <i class="fas fa-file-pdf mr-1"></i>
+                            Export Étudiants
+                        </a>
+                    </div>
                     <a href="<?php echo e(route('admin.schools.create')); ?>" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">
                         <i class="fas fa-plus mr-2"></i>
                         Ajouter une école

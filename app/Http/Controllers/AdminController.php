@@ -7,6 +7,7 @@ use App\Models\School;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -190,13 +191,49 @@ class AdminController extends Controller
             'admin_notes' => 'nullable|string',
         ]);
 
+        // Update application status
         $application->update([
             'status' => $validated['status'],
-            'admin_notes' => $validated['admin_notes'],
+            'admin_notes' => $validated['admin_notes'] ?? $application->admin_notes,
             'processed_at' => now(),
         ]);
 
-        return redirect()->back()
-            ->with('success', 'Statut de la candidature mis à jour avec succès !');
+        // Set success message based on status
+        $messages = [
+            'in_progress' => 'Candidature marquée comme en cours de traitement.',
+            'accepted' => 'Candidature acceptée avec succès !',
+            'rejected' => 'Candidature rejetée.',
+            'submitted' => 'Candidature remise en attente.',
+        ];
+
+        $message = $messages[$validated['status']] ?? 'Statut de la candidature mis à jour avec succès !';
+
+        return redirect()->back()->with('success', $message);
+    }
+
+    /**
+     * Export schools to PDF.
+     */
+    public function exportSchoolsPdf()
+    {
+        $schools = School::with('applications')->get();
+        
+        $pdf = Pdf::loadView('admin.exports.schools-pdf', compact('schools'));
+        
+        return $pdf->download('ecoles_educonnect_' . date('Y-m-d') . '.pdf');
+    }
+
+    /**
+     * Export students to PDF.
+     */
+    public function exportStudentsPdf()
+    {
+        $students = User::where('role', 'student')
+            ->with(['applications.school'])
+            ->get();
+        
+        $pdf = Pdf::loadView('admin.exports.students-pdf', compact('students'));
+        
+        return $pdf->download('etudiants_educonnect_' . date('Y-m-d') . '.pdf');
     }
 }

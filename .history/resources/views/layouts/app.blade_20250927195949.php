@@ -170,8 +170,7 @@
                     <h3 class="text-lg font-semibold mb-4">Contact</h3>
                     <ul class="space-y-2 text-gray-300">
                         <li><i class="fas fa-envelope mr-2"></i> contact@educonnect.sn</li>
-                        <li><i class="fas fa-phone mr-2"></i> +221 77 955 37 58</li>
-                        <li><i class="fas fa-phone mr-2"></i> +221 76 330 94 09</li>
+                        <li><i class="fas fa-phone mr-2"></i> +221 33 123 45 67</li>
                     </ul>
                 </div>
                 
