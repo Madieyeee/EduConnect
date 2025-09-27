@@ -207,7 +207,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label for="tuition_fee_min" class="block text-sm font-medium text-gray-700 mb-2">
-                                Frais de scolarité min (€)
+                                Frais de scolarité min (CFA)
                             </label>
                             <input type="number" id="tuition_fee_min" name="tuition_fee_min" min="0" step="100" value="{{ old('tuition_fee_min') }}"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('tuition_fee_min') border-red-500 @enderror">
@@ -218,7 +218,7 @@
                         
                         <div>
                             <label for="tuition_fee_max" class="block text-sm font-medium text-gray-700 mb-2">
-                                Frais de scolarité max (€)
+                                Frais de scolarité max (CFA)
                             </label>
                             <input type="number" id="tuition_fee_max" name="tuition_fee_max" min="0" step="100" value="{{ old('tuition_fee_max') }}"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('tuition_fee_max') border-red-500 @enderror">
@@ -229,7 +229,7 @@
                         
                         <div>
                             <label for="application_fee" class="block text-sm font-medium text-gray-700 mb-2">
-                                Frais de dossier (€) <span class="text-red-500">*</span>
+                                Frais de dossier (CFA) <span class="text-red-500">*</span>
                             </label>
                             <input type="number" id="application_fee" name="application_fee" min="0" step="10" required value="{{ old('application_fee', 0) }}"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('application_fee') border-red-500 @enderror">

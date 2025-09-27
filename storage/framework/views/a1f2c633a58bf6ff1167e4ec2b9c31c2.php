@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Gestion des écoles - Admin EduConnect'); ?>
 
-@section('title', 'Gestion des écoles - Admin EduConnect')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <div class="bg-white shadow">
@@ -12,7 +10,7 @@
                     <h1 class="text-2xl font-bold text-gray-900">Gestion des écoles</h1>
                     <p class="text-gray-600">Administrer les écoles partenaires</p>
                 </div>
-                <a href="{{ route('admin.schools.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">
+                <a href="<?php echo e(route('admin.schools.create')); ?>" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">
                     <i class="fas fa-plus mr-2"></i>
                     Ajouter une école
                 </a>
@@ -23,9 +21,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Search and Filters -->
         <div class="bg-white rounded-lg shadow p-6 mb-6">
-            <form method="GET" action="{{ route('admin.schools.index') }}" class="flex flex-col sm:flex-row gap-4">
+            <form method="GET" action="<?php echo e(route('admin.schools.index')); ?>" class="flex flex-col sm:flex-row gap-4">
                 <div class="flex-1">
-                    <input type="text" name="search" value="{{ request('search') }}" 
+                    <input type="text" name="search" value="<?php echo e(request('search')); ?>" 
                            placeholder="Rechercher par nom ou ville..." 
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
@@ -34,7 +32,7 @@
                         <i class="fas fa-search mr-2"></i>
                         Rechercher
                     </button>
-                    <a href="{{ route('admin.schools.index') }}" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
+                    <a href="<?php echo e(route('admin.schools.index')); ?>" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
                         <i class="fas fa-times mr-2"></i>
                         Effacer
                     </a>
@@ -43,11 +41,11 @@
         </div>
 
         <!-- Schools List -->
-        @if($schools->count() > 0)
+        <?php if($schools->count() > 0): ?>
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <div class="px-6 py-4 border-b border-gray-200">
                     <h2 class="text-lg font-semibold text-gray-900">
-                        {{ $schools->total() }} école(s) trouvée(s)
+                        <?php echo e($schools->total()); ?> école(s) trouvée(s)
                     </h2>
                 </div>
                 
@@ -76,7 +74,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach($schools as $school)
+                            <?php $__currentLoopData = $schools; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $school): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
@@ -84,56 +82,59 @@
                                             <i class="fas fa-university text-indigo-600"></i>
                                         </div>
                                         <div>
-                                            <div class="text-sm font-medium text-gray-900">{{ $school->name }}</div>
-                                            <div class="text-sm text-gray-500">{{ Str::limit($school->description, 50) }}</div>
+                                            <div class="text-sm font-medium text-gray-900"><?php echo e($school->name); ?></div>
+                                            <div class="text-sm text-gray-500"><?php echo e(Str::limit($school->description, 50)); ?></div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    {{ $school->city }}
+                                    <?php echo e($school->city); ?>
+
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex flex-wrap gap-1">
-                                        @foreach(array_slice($school->fields_of_study, 0, 2) as $field)
+                                        <?php $__currentLoopData = array_slice($school->fields_of_study, 0, 2); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $field): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                                {{ $field }}
+                                                <?php echo e($field); ?>
+
                                             </span>
-                                        @endforeach
-                                        @if(count($school->fields_of_study) > 2)
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if(count($school->fields_of_study) > 2): ?>
                                             <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
-                                                +{{ count($school->fields_of_study) - 2 }}
+                                                +<?php echo e(count($school->fields_of_study) - 2); ?>
+
                                             </span>
-                                        @endif
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    {{ number_format($school->application_fee, 0, ',', ' ') }} CFA
+                                    <?php echo e(number_format($school->application_fee, 0, ',', ' ')); ?> CFA
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    @if($school->is_active)
+                                    <?php if($school->is_active): ?>
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                             Active
                                         </span>
-                                    @else
+                                    <?php else: ?>
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                             Inactive
                                         </span>
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <div class="flex items-center space-x-2">
-                                        <a href="{{ route('schools.show', $school) }}" 
+                                        <a href="<?php echo e(route('schools.show', $school)); ?>" 
                                            class="text-blue-600 hover:text-blue-900" title="Voir">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.schools.edit', $school) }}" 
+                                        <a href="<?php echo e(route('admin.schools.edit', $school)); ?>" 
                                            class="text-indigo-600 hover:text-indigo-900" title="Modifier">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('admin.schools.destroy', $school) }}" 
+                                        <form method="POST" action="<?php echo e(route('admin.schools.destroy', $school)); ?>" 
                                               class="inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette école ?')">
-                                            @csrf
-                                            @method('DELETE')
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
                                             <button type="submit" class="text-red-600 hover:text-red-900" title="Supprimer">
                                                 <i class="fas fa-trash"></i>
                                             </button>
@@ -141,7 +142,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -149,26 +150,29 @@
 
             <!-- Pagination -->
             <div class="mt-6">
-                {{ $schools->links() }}
+                <?php echo e($schools->links()); ?>
+
             </div>
-        @else
+        <?php else: ?>
             <div class="bg-white rounded-lg shadow p-12 text-center">
                 <i class="fas fa-university text-6xl text-gray-300 mb-6"></i>
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Aucune école trouvée</h3>
                 <p class="text-gray-600 mb-8">
-                    @if(request('search'))
+                    <?php if(request('search')): ?>
                         Aucune école ne correspond à votre recherche.
-                    @else
+                    <?php else: ?>
                         Commencez par ajouter votre première école partenaire.
-                    @endif
+                    <?php endif; ?>
                 </p>
-                <a href="{{ route('admin.schools.create') }}" 
+                <a href="<?php echo e(route('admin.schools.create')); ?>" 
                    class="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition duration-300">
                     <i class="fas fa-plus mr-2"></i>
                     Ajouter une école
                 </a>
             </div>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\user\EduConnect\resources\views/admin/schools/index.blade.php ENDPATH**/ ?>

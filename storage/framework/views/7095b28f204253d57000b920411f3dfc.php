@@ -49,7 +49,7 @@
                     </div>
                     
                     <div>
-                        <label for="max_fee" class="block text-sm font-medium text-gray-700 mb-1">Prix max (€)</label>
+                        <label for="max_fee" class="block text-sm font-medium text-gray-700 mb-1">Prix max (CFA)</label>
                         <input type="number" id="max_fee" name="max_fee" value="<?php echo e(request('max_fee')); ?>" 
                                placeholder="Ex: 10000" 
                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">

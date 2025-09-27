@@ -142,7 +142,7 @@
                                 <i class="fas fa-file-invoice text-gray-400 w-5"></i>
                                 <span class="ml-3 text-sm text-gray-600">Frais de dossier</span>
                             </div>
-                            <p class="ml-8 text-sm font-medium text-gray-900"><?php echo e(number_format($school->application_fee, 0, ',', ' ')); ?> €</p>
+                            <p class="ml-8 text-sm font-medium text-gray-900"><?php echo e(number_format($school->application_fee, 0, ',', ' ')); ?> CFA</p>
                         <?php endif; ?>
 
                         <?php if($school->next_intake): ?>

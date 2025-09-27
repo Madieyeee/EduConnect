@@ -1,19 +1,17 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Postuler à ' . $school->name . ' - EduConnect'); ?>
 
-@section('title', 'Postuler à ' . $school->name . ' - EduConnect')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <div class="bg-white shadow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex items-center">
-                <a href="{{ route('schools.show', $school) }}" class="text-indigo-600 hover:text-indigo-800 mr-4">
+                <a href="<?php echo e(route('schools.show', $school)); ?>" class="text-indigo-600 hover:text-indigo-800 mr-4">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Postuler à {{ $school->name }}</h1>
-                    <p class="text-gray-600">{{ $school->city }}</p>
+                    <h1 class="text-2xl font-bold text-gray-900">Postuler à <?php echo e($school->name); ?></h1>
+                    <p class="text-gray-600"><?php echo e($school->city); ?></p>
                 </div>
             </div>
         </div>
@@ -26,25 +24,40 @@
                 <div class="bg-white rounded-lg shadow p-6">
                     <h2 class="text-xl font-semibold text-gray-900 mb-6">Formulaire de candidature</h2>
                     
-                    <form method="POST" action="{{ route('student.apply', $school) }}" class="space-y-6">
-                        @csrf
+                    <form method="POST" action="<?php echo e(route('student.apply', $school)); ?>" class="space-y-6">
+                        <?php echo csrf_field(); ?>
                         
                         <div>
                             <label for="field_of_study" class="block text-sm font-medium text-gray-700 mb-2">
                                 Filière souhaitée <span class="text-red-500">*</span>
                             </label>
                             <select id="field_of_study" name="field_of_study" required
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('field_of_study') border-red-500 @enderror">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 <?php $__errorArgs = ['field_of_study'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
                                 <option value="">Sélectionnez une filière</option>
-                                @foreach($school->fields_of_study as $field)
-                                    <option value="{{ $field }}" {{ old('field_of_study') == $field ? 'selected' : '' }}>
-                                        {{ $field }}
+                                <?php $__currentLoopData = $school->fields_of_study; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $field): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($field); ?>" <?php echo e(old('field_of_study') == $field ? 'selected' : ''); ?>>
+                                        <?php echo e($field); ?>
+
                                     </option>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                            @error('field_of_study')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
+                            <?php $__errorArgs = ['field_of_study'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div>
@@ -52,17 +65,32 @@
                                 Niveau de diplôme souhaité <span class="text-red-500">*</span>
                             </label>
                             <select id="diploma_level" name="diploma_level" required
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('diploma_level') border-red-500 @enderror">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 <?php $__errorArgs = ['diploma_level'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
                                 <option value="">Sélectionnez un niveau</option>
-                                @foreach($school->diplomas as $diploma)
-                                    <option value="{{ $diploma }}" {{ old('diploma_level') == $diploma ? 'selected' : '' }}>
-                                        {{ $diploma }}
+                                <?php $__currentLoopData = $school->diplomas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $diploma): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($diploma); ?>" <?php echo e(old('diploma_level') == $diploma ? 'selected' : ''); ?>>
+                                        <?php echo e($diploma); ?>
+
                                     </option>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                            @error('diploma_level')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
+                            <?php $__errorArgs = ['diploma_level'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div>
@@ -71,11 +99,25 @@
                             </label>
                             <textarea id="motivation_letter" name="motivation_letter" rows="8" required
                                       placeholder="Expliquez pourquoi vous souhaitez intégrer cette école et cette filière. Parlez de vos motivations, vos objectifs professionnels et ce qui vous attire dans cette formation..."
-                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('motivation_letter') border-red-500 @enderror">{{ old('motivation_letter') }}</textarea>
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 <?php $__errorArgs = ['motivation_letter'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"><?php echo e(old('motivation_letter')); ?></textarea>
                             <p class="mt-1 text-sm text-gray-500">Minimum 100 caractères</p>
-                            @error('motivation_letter')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
+                            <?php $__errorArgs = ['motivation_letter'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="bg-yellow-50 border border-yellow-200 rounded-md p-4">
@@ -92,7 +134,7 @@
                         </div>
 
                         <div class="flex justify-between items-center pt-6 border-t">
-                            <a href="{{ route('schools.show', $school) }}" 
+                            <a href="<?php echo e(route('schools.show', $school)); ?>" 
                                class="bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300 transition duration-300">
                                 <i class="fas fa-arrow-left mr-2"></i>
                                 Retour
@@ -116,25 +158,25 @@
                             <i class="fas fa-university text-indigo-600"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-900">{{ $school->name }}</h3>
-                            <p class="text-sm text-gray-500">{{ $school->city }}</p>
+                            <h3 class="font-semibold text-gray-900"><?php echo e($school->name); ?></h3>
+                            <p class="text-sm text-gray-500"><?php echo e($school->city); ?></p>
                         </div>
                     </div>
                     
                     <div class="space-y-3 text-sm">
-                        @if($school->application_fee > 0)
+                        <?php if($school->application_fee > 0): ?>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Frais de dossier:</span>
-                                <span class="font-medium">{{ number_format($school->application_fee, 0, ',', ' ') }} CFA</span>
+                                <span class="font-medium"><?php echo e(number_format($school->application_fee, 0, ',', ' ')); ?> CFA</span>
                             </div>
-                        @endif
+                        <?php endif; ?>
                         
-                        @if($school->next_intake)
+                        <?php if($school->next_intake): ?>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Prochaine rentrée:</span>
-                                <span class="font-medium">{{ $school->next_intake->format('d/m/Y') }}</span>
+                                <span class="font-medium"><?php echo e($school->next_intake->format('d/m/Y')); ?></span>
                             </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -198,7 +240,7 @@
     </div>
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     // Character counter for motivation letter
     const textarea = document.getElementById('motivation_letter');
@@ -220,5 +262,7 @@
     textarea.addEventListener('input', updateCounter);
     updateCounter();
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\user\EduConnect\resources\views/student/apply.blade.php ENDPATH**/ ?>

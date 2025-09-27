@@ -75,16 +75,84 @@
     </div>
 </div>
 
+<!-- ISI Featured Section -->
+<div class="py-16 bg-gradient-to-r from-blue-600 to-purple-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                🏆 ÉCOLE VEDETTE
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Institut Supérieur d'Informatique (ISI)
+            </h2>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                L'école de référence en informatique au Sénégal. Formation d'excellence en développement, cybersécurité, IA et data science.
+            </p>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Pourquoi choisir l'ISI ?</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Taux d'insertion professionnelle de 95%</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Partenariats avec les grandes entreprises tech</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Formation pratique et projets réels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Accréditations CAMES et CEDEAO</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Génie Logiciel</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Cybersécurité</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Intelligence Artificielle</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Data Science</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="{{ route('schools.show', 1) }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 text-center">
+                            <i class="fas fa-info-circle mr-2"></i>En savoir plus
+                        </a>
+                        <a href="{{ route('student.apply', 1) }}" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300 text-center">
+                            <i class="fas fa-paper-plane mr-2"></i>Postuler maintenant
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+                        <i class="fas fa-laptop-code text-6xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Frais de scolarité</h4>
+                        <p class="text-3xl font-bold mb-2">600 000 - 1 500 000 CFA</p>
+                        <p class="text-blue-100">Par année académique</p>
+                        <div class="mt-4 pt-4 border-t border-blue-400">
+                            <p class="text-sm">Frais de candidature: <strong>25 000 CFA</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Featured Schools Section -->
 @if($featuredSchools->count() > 0)
 <div class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Écoles en vedette
+                Autres écoles partenaires
             </h2>
             <p class="text-xl text-gray-600">
-                Découvrez quelques-unes de nos écoles partenaires
+                Découvrez nos autres écoles d'excellence
             </p>
         </div>
         

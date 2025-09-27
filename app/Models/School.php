@@ -70,14 +70,39 @@ class School extends Model
     }
 
     /**
-     * Get formatted tuition fee range
+     * Format tuition fee min in CFA.
+     */
+    public function getFormattedTuitionFeeMinAttribute()
+    {
+        return number_format($this->tuition_fee_min, 0, ',', ' ') . ' CFA';
+    }
+
+    /**
+     * Format tuition fee max in CFA.
+     */
+    public function getFormattedTuitionFeeMaxAttribute()
+    {
+        return number_format($this->tuition_fee_max, 0, ',', ' ') . ' CFA';
+    }
+
+    /**
+     * Format application fee in CFA.
+     */
+    public function getFormattedApplicationFeeAttribute()
+    {
+        return number_format($this->application_fee, 0, ',', ' ') . ' CFA';
+    }
+
+    /**
+     * Get tuition fee range formatted in CFA.
      */
     public function getTuitionFeeRangeAttribute()
     {
-        if ($this->tuition_fee_min && $this->tuition_fee_max) {
-            return number_format($this->tuition_fee_min, 0, ',', ' ') . ' - ' . 
-                   number_format($this->tuition_fee_max, 0, ',', ' ') . ' €';
+        if ($this->tuition_fee_min == $this->tuition_fee_max) {
+            return $this->formatted_tuition_fee_min;
         }
-        return 'Non spécifié';
+        return $this->formatted_tuition_fee_min . ' - ' . $this->formatted_tuition_fee_max;
     }
+
+
 }

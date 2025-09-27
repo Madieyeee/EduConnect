@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
-            $table->string('country')->default('France');
+            $table->string('country')->default('Sénégal');
             $table->rememberToken();
             $table->timestamps();
         });
