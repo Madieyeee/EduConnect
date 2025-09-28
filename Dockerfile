@@ -11,10 +11,13 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libpq-dev \
-    nginx
+    libzip-dev \
+    nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd
+# Install PHP extensions required by Laravel
+RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -22,11 +25,15 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy application
-COPY . .
+# Copy composer files first for better caching
+COPY composer.json composer.lock ./
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Verify composer.json and install dependencies
+RUN composer validate --no-check-publish \
+    && composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+# Copy rest of application
+COPY . .
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
@@ -51,11 +58,15 @@ RUN echo 'server {\n\
 
 # Create startup script
 RUN echo '#!/bin/bash\n\
-php artisan config:cache || true\n\
-php artisan route:cache || true\n\
-php artisan storage:link || true\n\
-php artisan migrate --force || true\n\
+set -e\n\
+echo "Starting EduConnect..."\n\
+php artisan config:cache || echo "Config cache failed"\n\
+php artisan route:cache || echo "Route cache failed"\n\
+php artisan storage:link || echo "Storage link failed"\n\
+php artisan migrate --force || echo "Migration failed"\n\
+echo "Starting PHP-FPM..."\n\
 php-fpm -D\n\
+echo "Starting Nginx..."\n\
 nginx -g "daemon off;"' > /start.sh
 
 RUN chmod +x /start.sh
