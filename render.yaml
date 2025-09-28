@@ -1,7 +1,7 @@
 services:
   - type: web
     name: educonnect
-    env: php
+    runtime: php
     buildCommand: bash build.sh
     startCommand: |
       php artisan storage:link || true
