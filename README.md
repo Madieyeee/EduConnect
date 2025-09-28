@@ -1,14 +1,13 @@
 # EduConnect Sénégal - Plateforme Éducative
 
-**EduConnect Sénégal** est une plateforme web centralisée conçue pour le référencement d'établissements d'enseignement supérieur au Sénégal et la gestion simplifiée des candidatures étudiantes. Ce projet a été spécialement adapté pour un hackathon, avec un focus sur le contexte sénégalais.
+**EduConnect Sénégal** est une plateforme web centralisée conçue pour le référencement d'établissements d'enseignement supérieur au Sénégal et la gestion simplifiée des candidatures étudiantes. Ce projet a été spécialement adapté pour un hackathon
 
-## ✨ Contexte du Hackathon
+## 🎯 Objectifs
 
-Cette version d'EduConnect a été entièrement "sénégalisée" :
-- **Monnaie** : Toutes les transactions et tous les frais sont en **Francs CFA (CFA)**.
-- **Données** : Les écoles, étudiants et adresses sont basés au Sénégal.
-- **Contenu** : Les emails, numéros de téléphone et autres informations sont adaptés au contexte local.
-- **Écoles Vedettes** : Met en avant des institutions sénégalaises renommées comme l'Institut Supérieur d'Informatique (ISI).
+- Offrir une plateforme clé en main pour référencer les écoles et gérer les inscriptions des étudiants
+- Les écoles n'ont pas à gérer leur profil (elles sont passives)
+- EduConnect renseigne toutes les informations et suit les inscriptions
+- À chaque inscription validée, une commission est perçue par EduConnect
 
 ## 🚀 Fonctionnalités
 
@@ -84,40 +83,6 @@ Après avoir lancé le seeder, vous pouvez utiliser les comptes suivants pour te
 Ce projet a été développé par :
 - **Madieyeee** - [GitHub](https://github.com/Madieyeee)
 - **Dionecena** - [GitHub](https://github.com/Dionecena)
-
-
-EduConnect est une plateforme centralisée qui référence les écoles, permet aux étudiants de postuler, et permet à EduConnect de suivre les candidatures et gérer la commission.
-
-## 🎯 Objectifs
-
-- Offrir une plateforme clé en main pour référencer les écoles et gérer les inscriptions des étudiants
-- Les écoles n'ont pas à gérer leur profil (elles sont passives)
-- EduConnect renseigne toutes les informations et suit les inscriptions
-- À chaque inscription validée, une commission est perçue par EduConnect
-
-## 👥 Acteurs
-
-- **Étudiant** : consulte, postule, suit l'état de sa candidature
-- **EduConnect (Admin plateforme)** : gère les fiches écoles, traite les candidatures, met à jour les statuts
-- **Écoles** : entités passives (pas d'interaction directe avec le système)
-
-## ✨ Fonctionnalités
-
-### Pour les Étudiants
-- ✅ Créer un compte (inscription + connexion avec Laravel Auth)
-- ✅ Rechercher une école (ville, filière, accréditation, prix, diplôme, etc.)
-- ✅ Consulter une fiche école (description, accréditations, prix, diplômes, rentrée, conditions)
-- ✅ Faire une demande d'inscription en ligne (formulaire)
-- ✅ Suivre sa demande (statuts : Soumise, En cours, Acceptée, Rejetée)
-- ✅ Dashboard personnel avec statistiques
-
-### Pour l'Admin EduConnect
-- ✅ Tableau de bord admin avec statistiques
-- ✅ Ajouter / modifier / supprimer une école
-- ✅ Définir les frais de dossier par école
-- ✅ Gérer les candidatures (voir, trier, mettre à jour statut)
-- ✅ Suivre les commissions générées (basées sur les frais de dossier)
-- ✅ Interface complète de gestion
 
 ## 🛠 Technologies utilisées
 
@@ -326,9 +291,9 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## 📞 Support
 
 Pour toute question ou problème :
-- Email : support@educonnect.fr
+- Email :madieyepro@gmail.com
 - Documentation : [Wiki du projet]
-- Issues : [GitHub Issues]
+- Issues : [GitHub Issues](https://github.com/Madieyeee/EduConnect/issues)
 
 ## 🎉 Remerciements
 
