@@ -1,10 +1,9 @@
 services:
   - type: web
     name: educonnect
-    env: php
+    runtime: docker
     plan: free
-    buildCommand: bash build.sh
-    startCommand: php artisan storage:link && php artisan migrate --force && php -S 0.0.0.0:$PORT -t public public/index.php
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
