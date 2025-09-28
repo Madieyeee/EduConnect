@@ -25,15 +25,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy composer files first for better caching
-COPY composer.json composer.lock ./
-
-# Verify composer.json and install dependencies
-RUN composer validate --no-check-publish \
-    && composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-
-# Copy rest of application
+# Copy all application files
 COPY . .
+
+# Debug and install dependencies
+RUN echo "=== Debugging Composer ===" \
+    && ls -la \
+    && echo "=== Composer version ===" \
+    && composer --version \
+    && echo "=== PHP version ===" \
+    && php --version \
+    && echo "=== Installing dependencies ===" \
+    && composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs \
+    && echo "=== Composer install completed ==="
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
