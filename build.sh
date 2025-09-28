@@ -2,19 +2,11 @@
 set -o errexit
 
 # Install dependencies
-composer install --no-dev --optimize-autoloader
+composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-# Generate application key
-php artisan key:generate --force
-
-# Cache config
+# Cache config and routes and views for performance
 php artisan config:cache
 php artisan route:cache
-
-# Run migrations
-php artisan migrate --force
-
-# Seed database (optionnel)
-php artisan db:seed --force
+php artisan view:cache
 
 echo "Build completed successfully!"

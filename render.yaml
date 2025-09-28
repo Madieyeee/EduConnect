@@ -3,7 +3,10 @@ services:
     name: educonnect
     env: php
     buildCommand: bash build.sh
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    startCommand: |
+      php artisan storage:link || true
+      php artisan migrate --force
+      php -S 0.0.0.0:$PORT -t public public/index.php
     envVars:
       - key: APP_ENV
         value: production
