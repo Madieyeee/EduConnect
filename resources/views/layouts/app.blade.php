@@ -24,6 +24,16 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        
+        /* Fix pour le menu déroulant de déconnexion */
+        .dropdown-menu {
+            transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+        }
+        
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -62,7 +72,7 @@
                                 {{ Auth::user()->name }}
                                 <i class="fas fa-chevron-down ml-1"></i>
                             </button>
-                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
+                            <div class="dropdown-menu absolute right-0 top-full w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible">
                                 @if(Auth::user()->isStudent())
                                     <a href="{{ route('student.applications') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                         <i class="fas fa-file-alt mr-2"></i> Mes candidatures
