@@ -1,23 +1,22 @@
 services:
   - type: web
     name: educonnect
-    runtime: php
+    env: php
+    plan: free
     buildCommand: bash build.sh
-    startCommand: |
-      php artisan storage:link || true
-      php artisan migrate --force
-      php -S 0.0.0.0:$PORT -t public public/index.php
+    startCommand: php artisan storage:link && php artisan migrate --force && php -S 0.0.0.0:$PORT -t public public/index.php
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
-      - key: APP_KEY
-        generateValue: true
       - key: LOG_CHANNEL
         value: stderr
+      - key: APP_KEY
+        sync: false
 
 databases:
   - name: educonnect-db
     databaseName: educonnect
     user: educonnect_user
+    plan: free
