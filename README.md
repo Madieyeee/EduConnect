@@ -72,10 +72,10 @@ Après avoir lancé le seeder, vous pouvez utiliser les comptes suivants pour te
   - **Mot de passe** : `password`
 
 - **Comptes Étudiants**
-  - **Email** : `aminata.diallo@example.com`
+  - **Email** : `aminata.diallo@gmail.com`
   - **Mot de passe** : `password`
   
-  - **Email** : `moussa.ndiaye@example.com`
+  - **Email** : `moussa.ndiaye@gmail.com`
   - **Mot de passe** : `password`
 
 ## 🧑‍💻 Développeurs
