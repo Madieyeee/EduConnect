@@ -67,7 +67,8 @@ echo "Starting EduConnect..."\n\
 php artisan config:cache || echo "Config cache failed"\n\
 php artisan route:cache || echo "Route cache failed"\n\
 php artisan storage:link || echo "Storage link failed"\n\
-php artisan migrate --force || echo "Migration failed"\n\
+echo "Running fresh migration with seeders..."\n\
+php artisan migrate:fresh --seed --force || echo "Fresh migration failed"\n\
 echo "Starting PHP-FPM..."\n\
 php-fpm -D\n\
 echo "Starting Nginx..."\n\
