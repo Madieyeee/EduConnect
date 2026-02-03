@@ -60,20 +60,8 @@ RUN echo 'server {\n\
     }\n\
 }' > /etc/nginx/sites-available/default
 
-# Create startup script
-RUN echo '#!/bin/bash\n\
-set -e\n\
-echo "Starting EduConnect..."\n\
-php artisan config:cache || echo "Config cache failed"\n\
-php artisan route:cache || echo "Route cache failed"\n\
-php artisan storage:link || echo "Storage link failed"\n\
-echo "Running fresh migration with seeders..."\n\
-php artisan migrate:fresh --seed --force || echo "Fresh migration failed"\n\
-echo "Starting PHP-FPM..."\n\
-php-fpm -D\n\
-echo "Starting Nginx..."\n\
-nginx -g "daemon off;"' > /start.sh
-
+# Copy startup script
+COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 EXPOSE 80
