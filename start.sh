@@ -7,11 +7,12 @@ echo "=== Starting EduConnect on Railway ==="
 echo "Waiting for database connection..."
 sleep 15
 
-# Nettoyer les caches pour assurer une configuration fraîche
-echo "Clearing caches to ensure fresh config..."
+# Nettoyer tous les caches pour assurer une configuration fraîche
+echo "Clearing all caches to ensure fresh config..."
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
+php artisan cache:clear
 
 # Exécuter les migrations de la base de données
 echo "Running database migrations..."
@@ -21,15 +22,13 @@ php artisan migrate --force
 echo "Linking storage..."
 php artisan storage:link
 
-# Mettre en cache les routes et les vues (plus sûr)
-echo "Caching routes and views..."
+# Mettre en cache les routes et les vues (sûr à l'exécution)
+echo "Caching routes and views for performance..."
 php artisan route:cache
 php artisan view:cache
 
-
 echo "Starting PHP-FPM..."
 php-fpm -D
-
 
 echo "Starting Nginx..."
 # Nginx s'exécute au premier plan pour maintenir le conteneur en vie.
