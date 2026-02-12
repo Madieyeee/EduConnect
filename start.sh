@@ -1,30 +1,36 @@
 #!/bin/bash
 set -e
 
-echo "=== Starting EduConnect on Render ==="
+echo "=== Starting EduConnect on Railway ==="
 
-# Wait for database to be ready
-echo "Waiting for database..."
-sleep 5
+# Attendre que la base de données soit prête
+echo "Waiting for database connection..."
+sleep 15
 
-# Run migrations (not fresh, to preserve data)
-echo "Running migrations..."
-php artisan migrate --force || echo "Migration failed, continuing..."
+# Nettoyer les caches pour assurer une configuration fraîche
+echo "Clearing caches to ensure fresh config..."
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
 
-# Create storage link if it doesn't exist
-echo "Creating storage link..."
-php artisan storage:link || echo "Storage link already exists"
+# Exécuter les migrations de la base de données
+echo "Running database migrations..."
+php artisan migrate --force
 
-# Cache configurations for production
-echo "Caching configurations..."
-php artisan config:cache
+# Lier le stockage
+echo "Linking storage..."
+php artisan storage:link
+
+# Mettre en cache les routes et les vues (plus sûr)
+echo "Caching routes and views..."
 php artisan route:cache
 php artisan view:cache
 
-# Start PHP-FPM in background
+
 echo "Starting PHP-FPM..."
 php-fpm -D
 
-# Start Nginx in foreground
+
 echo "Starting Nginx..."
+# Nginx s'exécute au premier plan pour maintenir le conteneur en vie.
 nginx -g "daemon off;"
